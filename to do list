@@ -1,0 +1,40 @@
+ class ToDoList:
+    def __init__(self):
+        self.tasks = {}
+
+    def add_task(self, task, priority):
+        self.tasks[task] = priority
+
+    def remove_task(self, task):
+        if task in self.tasks:
+            del self.tasks[task]
+        else:
+            print("Task not found.")
+
+    def display_tasks(self):
+        if not self.tasks:
+            print("No tasks found.")
+        else:
+            for task, priority in self.tasks.items():
+                print(f"Task: {task}, Priority: {priority}")
+
+todo_list = ToDoList()
+
+while True:
+    print("\n1. Add Task\n2. Remove Task\n3. Display Tasks\n4. Exit")
+    choice = input("Enter your choice (1/2/3/4): ")
+
+    if choice == '1':
+        task = input("Enter task: ")
+        priority = input("Enter priority: ")
+        todo_list.add_task(task, priority)
+    elif choice == '2':
+        task = input("Enter task to remove: ")
+        todo_list.remove_task(task)
+    elif choice == '3':
+        todo_list.display_tasks()
+    elif choice == '4':
+        print("Exiting ToDo List application. Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please enter a valid option.")
